@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gianni — Inscription</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <a class="logo" href="index.html">Gianni</a>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="inscription.html" aria-current="page">Inscription</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
+  </header>
+
+  <main>
+    <h1 style="font-size:clamp(2rem,4vw,2.8rem);">Inscription</h1>
+    <p class="body-text">Reste informé de l'avancée de mes projets.</p>
+
+    <form data-form data-success-text="Merci, ton inscription est bien enregistrée !">
+      <div>
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <button type="submit">S'inscrire</button>
+    </form>
+  </main>
+
+  <footer>&copy; 2026 Gianni — Portfolio réalisé en apprenant à maîtriser Claude</footer>
+
+  <script src="script.js"></script>
+  <script src="form.js"></script>
+
+</body>
+</html>
