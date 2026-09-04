@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gianni — Aperçu du site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #121210;
+    --ink: #F3EFE6;
+    --gold: #C9A24B;
+    --line: #3A362E;
+    --muted: #9A9488;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .badge {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: center;
+    padding: 0.5rem;
+    background: rgba(201,162,75,0.08);
+    letter-spacing: 0.02em;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.6rem clamp(1.5rem, 5vw, 4rem);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: -0.02em;
+  }
+  nav { display: flex; gap: clamp(1rem, 3vw, 2.2rem); }
+  nav button {
+    background: none;
+    border: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0.3rem 0;
+    transition: color 0.25s ease;
+  }
+  nav button.active, nav button:hover { color: var(--gold); }
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem clamp(1.5rem, 5vw, 4rem);
+    text-align: center;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .subtitle {
+    margin-top: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    color: var(--gold);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
+  .body-text {
+    margin-top: 1.4rem;
+    max-width: 46ch;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .gallery-grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 780px;
+  }
+  .gallery-item {
+    aspect-ratio: 1;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+  form {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+  }
+  label { font-size: 0.8rem; color: var(--muted); display: block; margin-bottom: 0.35rem; }
+  input, textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--gold); }
+  button[type="submit"] {
+    margin-top: 0.4rem;
+    padding: 0.75rem;
+    background: var(--gold);
+    border: none;
+    border-radius: 6px;
+    color: var(--bg);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  footer {
+    padding: 1.4rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+  <div class="badge">Aperçu du site — clique sur les onglets pour naviguer entre les 5 pages</div>
+
+  <header>
+    <span class="logo">Gianni</span>
+    <nav id="nav"></nav>
+  </header>
+
+  <main id="main"></main>
+
+  <footer>&copy; 2026 Gianni — Portfolio réalisé en apprenant à maîtriser Claude</footer>
+
+  <script>
+    const pages = {
+      accueil: {
+        label: 'Accueil',
+        render: () => `
+          <h1>Gianni</h1>
+          <p class="subtitle">Road to million</p>
+          <p class="body-text">Bienvenue sur mon portfolio. Ce site est mon terrain d'entraînement pour apprendre à concevoir et publier des projets web de A à Z.</p>
+        `
+      },
+      apropos: {
+        label: 'À propos',
+        render: () => `
+          <h1 style="font-size:clamp(2rem,4vw,2.8rem);">À propos</h1>
+          <p class="body-text">Je m'appelle Gianni et j'apprends à concevoir et publier des projets web et mobile de A à Z. Ce site est mon terrain d'entraînement : road to million.</p>
+        `
+      },
+      galerie: {
+        label: 'Galerie',
+        render: () => `
+          <h1 style="font-size:clamp(2rem,4vw,2.8rem);">Galerie</h1>
+          <p class="body-text">Mes projets, au fur et à mesure qu'ils avancent.</p>
+          <div class="gallery-grid">
+            <div class="gallery-item">Projet 1</div>
+            <div class="gallery-item">Projet 2</div>
+            <div class="gallery-item">Projet 3</div>
+          </div>
+        `
+      },
+      inscription: {
+        label: 'Inscription',
+        render: () => `
+          <h1 style="font-size:clamp(2rem,4vw,2.8rem);">Inscription</h1>
+          <p class="body-text">Reste informé de l'avancée de mes projets.</p>
+          <form onsubmit="return false;">
+            <div><label>Nom</label><input type="text"></div>
+            <div><label>Email</label><input type="email"></div>
+            <button type="submit">S'inscrire</button>
+          </form>
+        `
+      },
+      contact: {
+        label: 'Contact',
+        render: () => `
+          <h1 style="font-size:clamp(2rem,4vw,2.8rem);">Contact</h1>
+          <p class="body-text">Une question, une idée de collaboration ? Écris-moi.</p>
+          <form onsubmit="return false;">
+            <div><label>Nom</label><input type="text"></div>
+            <div><label>Email</label><input type="email"></div>
+            <div><label>Message</label><textarea rows="4"></textarea></div>
+            <button type="submit">Envoyer</button>
+          </form>
+        `
+      }
+    };
+
+    const navEl = document.getElementById('nav');
+    const mainEl = document.getElementById('main');
+
+    function renderNav(active) {
+      navEl.innerHTML = Object.keys(pages).map(key =>
+        `<button data-page="${key}" class="${key === active ? 'active' : ''}">${pages[key].label}</button>`
+      ).join('');
+      navEl.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => goTo(btn.dataset.page));
+      });
+    }
+
+    function goTo(key) {
+      mainEl.innerHTML = pages[key].render();
+      renderNav(key);
+    }
+
+    goTo('accueil');
+  </script>
+
+</body>
+</html>
